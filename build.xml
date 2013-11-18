@@ -1,0 +1,56 @@
+<project>
+
+	<tstamp>
+	    <format property="BUILD_TIME" pattern="yyyy-MM-dd HH:mm"/>
+    </tstamp>
+
+	<property name="build.classes.dir" value="build/classes"/>
+	<property name="build.jar.dir" value="build/jar"/>
+	<property name="main.class" value="com.davecoss.java.Main"/>
+  <property name="lib.dir" value="lib"/>
+  <property name="jar.name" value="javalib.jar"/>
+
+  <path id="classpath">
+    <fileset dir="${lib.dir}" includes="**/*.jar"/>
+  </path>
+
+  <path id="targetclasspath">
+    <fileset dir="${lib.dir}" includes="**/*.jar"/>
+    <fileset dir="build/jar" includes="*.jar"/>
+  </path>
+
+    <target name="clean">
+        <delete dir="build"/>
+    </target>
+
+    <target name="classpath">
+    	<pathconvert property="classpathexpanded" refid="targetclasspath"/>
+    	<echo message="${classpathexpanded}"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="${build.classes.dir}"/>
+        <javac srcdir="src" destdir="${build.classes.dir}" classpathref="classpath" debug="on">
+            <compilerarg value="-Xlint:unchecked" />
+        </javac>
+    </target>
+
+    <target name="jar" depends="compile">
+	    <propertyfile file="${build.classes.dir}/com/davecoss/java/build.info">
+			<entry key="build_date" value="${BUILD_TIME}"/>
+			<entry key="version" value="1.0"/>
+	    </propertyfile>
+        <mkdir dir="${build.jar.dir}"/>
+        <jar destfile="${build.jar.dir}/${jar.name}" basedir="${build.classes.dir}">
+	    <fileset dir="src" includes="**/*.java"/>
+            <manifest>
+                <attribute name="Main-Class" value="${main.class}"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="run" depends="jar">
+      <java fork="true" classpathref="classpath" classpath="${build.jar.dir}/${jar.name}" classname="${main.class}"/>
+   </target>
+
+</project>
