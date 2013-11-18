@@ -8,6 +8,8 @@ public interface Plugin {
 	
 	public Collection<String> list_functions() throws PluginException;
 	
+	public boolean has_function(String function_name) throws PluginException;
+	
 	public void destroy() throws PluginException;
 
 }
