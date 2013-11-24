@@ -3,8 +3,9 @@ package com.davecoss.java;
 public interface LogHandler {
 
 	enum Level {INFO, WARN, DEBUG, ERROR, FATAL };
-	static Level level = Level.ERROR;
 	
+	public void setLevel(Level newlevel);
+	public Level getLevel();
 	
 	public void fatal(String msg);
 	public void fatal(String msg, Throwable throwable);

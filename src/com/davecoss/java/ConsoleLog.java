@@ -3,10 +3,12 @@ package com.davecoss.java;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 
+
 public class ConsoleLog implements LogHandler {
 
 	private String prefix = "";
 	private PrintWriter log = new PrintWriter(System.err);
+	protected Level level = Level.ERROR;
 	
 	public ConsoleLog(String prefix) {
 		this.prefix = prefix;
@@ -22,7 +24,15 @@ public class ConsoleLog implements LogHandler {
 		this.log = logwriter;
 	}
 	
+	@Override
+	public void setLevel(Level newlevel) {
+		level = newlevel;
+	}
 	
+	@Override
+	public Level getLevel() {
+		return level;
+	}
 	
 	@Override
 	public void fatal(String msg) {
