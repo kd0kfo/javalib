@@ -5,8 +5,6 @@ import java.io.PrintWriter;
 
 public class ConsoleLog implements LogHandler {
 
-	enum Level {INFO, WARN, DEBUG, ERROR, FATAL };
-	private Level level = Level.ERROR;
 	private String prefix = "";
 	private PrintWriter log = new PrintWriter(System.err);
 	
