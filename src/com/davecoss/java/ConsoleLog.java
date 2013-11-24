@@ -11,16 +11,16 @@ public class ConsoleLog implements LogHandler {
 	protected Level level = Level.ERROR;
 	
 	public ConsoleLog(String prefix) {
-		this.prefix = prefix;
+		this.prefix = prefix + " - ";
 	}
 	
 	public ConsoleLog(String prefix, OutputStream logstream) {
-		this.prefix = prefix;
+		this.prefix = prefix + " - ";
 		this.log = new PrintWriter(logstream);
 	}
 	
 	public ConsoleLog(String prefix, PrintWriter logwriter) {
-		this.prefix = prefix;
+		this.prefix = prefix + " - ";
 		this.log = logwriter;
 	}
 	
@@ -35,15 +35,23 @@ public class ConsoleLog implements LogHandler {
 	}
 	
 	@Override
+	public OutputStream setLogStream(OutputStream stream) {
+		log = new PrintWriter(stream);
+		return stream;
+	}
+	
+	@Override
 	public void fatal(String msg) {
 		log.write(prefix);
 		log.println(msg);
+		flush();
 	}
 
 	@Override
 	public void fatal(String msg, Throwable throwable) {
 		fatal(msg);
 		throwable.printStackTrace(log);
+		flush();
 	}
 
 	@Override
@@ -52,6 +60,7 @@ public class ConsoleLog implements LogHandler {
 			return;
 		log.write(prefix);
 		log.println(msg);
+		flush();
 	}
 
 	@Override
@@ -60,6 +69,7 @@ public class ConsoleLog implements LogHandler {
 			return;
 		error(msg);
 		throwable.printStackTrace(log);
+		flush();
 	}
 
 	@Override
@@ -68,6 +78,7 @@ public class ConsoleLog implements LogHandler {
 			return;
 		log.write(prefix);
 		log.println(msg);
+		flush();
 	}
 
 	@Override
@@ -76,6 +87,7 @@ public class ConsoleLog implements LogHandler {
 			return;
 		debug(msg);
 		throwable.printStackTrace(log);
+		flush();
 	}
 
 	@Override
@@ -84,6 +96,7 @@ public class ConsoleLog implements LogHandler {
 			return;
 		log.write(prefix);
 		log.println(msg);
+		flush();
 	}
 
 	@Override
@@ -92,6 +105,7 @@ public class ConsoleLog implements LogHandler {
 			return;
 		warn(msg);
 		throwable.printStackTrace(log);
+		flush();
 	}
 
 	@Override
@@ -100,6 +114,7 @@ public class ConsoleLog implements LogHandler {
 			return;
 		log.write(prefix);
 		log.println(msg);
+		flush();
 	}
 
 	@Override
@@ -108,6 +123,11 @@ public class ConsoleLog implements LogHandler {
 			return;
 		info(msg);
 		throwable.printStackTrace(log);
+		flush();
+	}
+	
+	public void flush() {
+		log.flush();
 	}
 
 }

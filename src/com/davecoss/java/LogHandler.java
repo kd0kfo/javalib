@@ -1,11 +1,15 @@
 package com.davecoss.java;
 
+import java.io.OutputStream;
+
 public interface LogHandler {
 
 	enum Level {INFO, WARN, DEBUG, ERROR, FATAL };
 	
 	public void setLevel(Level newlevel);
 	public Level getLevel();
+
+	public OutputStream setLogStream(OutputStream stream);
 	
 	public void fatal(String msg);
 	public void fatal(String msg, Throwable throwable);
