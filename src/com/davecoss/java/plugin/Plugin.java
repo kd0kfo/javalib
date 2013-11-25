@@ -1,11 +1,17 @@
 package com.davecoss.java.plugin;
 
 import java.io.File;
+import java.io.InputStream;
+import java.io.PrintStream;
 import java.util.Collection;
+
+import javax.swing.JDialog;
 
 public interface Plugin {
 	
-	public void init() throws PluginInitException;
+    public void init(PrintStream output, InputStream input) throws PluginInitException;
+
+    public void init(JDialog parent) throws PluginInitException;
 	
 	public Collection<String> list_functions() throws PluginException;
 	

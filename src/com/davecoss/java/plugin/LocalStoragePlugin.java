@@ -4,11 +4,15 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.PrintStream;
 import java.net.URI;
 import java.util.Collection;
+
+import javax.swing.JDialog;
 
 public class LocalStoragePlugin implements StoragePlugin {
 	
@@ -24,9 +28,15 @@ public class LocalStoragePlugin implements StoragePlugin {
 	}
 	
 	@Override
-	public void init() throws PluginInitException {
+	public void init(PrintStream output, InputStream input) throws PluginInitException {
 		// Nothing to do.
 	}
+
+        @Override
+	public void init(JDialog parent) throws PluginInitException {
+	    // Nothing to do
+	}
+
 
 	@Override
 	public Collection<String> list_functions() throws PluginException {
