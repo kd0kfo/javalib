@@ -26,7 +26,7 @@ public interface StoragePlugin extends Plugin {
 	 */
 	public URI saveStream(InputStream input, int amount_to_read, URI destination) throws PluginException;
 
-	public InputStream readStream(URI uri) throws PluginException;
+	public InputStream getInputStream(URI uri) throws PluginException;
 
 	public OutputStream getOutputStream(URI uri) throws PluginException;
 	

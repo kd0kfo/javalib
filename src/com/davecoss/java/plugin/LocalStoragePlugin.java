@@ -128,7 +128,7 @@ public class LocalStoragePlugin implements StoragePlugin {
 	}
 
 	@Override
-	public InputStream readStream(URI uri) throws PluginException {
+	public InputStream getInputStream(URI uri) throws PluginException {
 		try {
 			return new FileInputStream(uri.getPath());
 		} catch (FileNotFoundException fnfe) {
