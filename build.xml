@@ -55,6 +55,7 @@
    </target>
 
    <target name="javadoc">
+     <mkdir dir="docs/api"/>
      <javadoc
         destdir="docs/api"
         author="true"
