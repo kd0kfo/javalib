@@ -127,7 +127,6 @@ public class ConsoleLog implements LogHandler {
 	}
 	
 	public void flush() {
-		log.println("DEBUG LEVEL: " + getLevel());
 		log.flush();
 	}
 
