@@ -8,7 +8,7 @@ public class ConsoleLog implements LogHandler {
 
 	private String prefix = "";
 	private PrintWriter log = new PrintWriter(System.err);
-	protected Level level = Level.ERROR;
+	protected static Level level = Level.ERROR;
 	
 	public ConsoleLog(String prefix) {
 		this.prefix = prefix + " - ";
@@ -127,6 +127,7 @@ public class ConsoleLog implements LogHandler {
 	}
 	
 	public void flush() {
+		log.println("DEBUG LEVEL: " + getLevel());
 		log.flush();
 	}
 
