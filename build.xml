@@ -50,7 +50,7 @@
         </jar>
     </target>
 
-    <target name="run" depends="jar">
+    <target name="test" depends="jar">
       <java fork="true" classpathref="classpath" classpath="${build.jar.dir}/${jar.name}" classname="${main.class}"/>
    </target>
 
