@@ -5,14 +5,20 @@
     </tstamp>
 
 	<property name="version" value="1.0-beta"/>
+	<property name="test.dir" value="test"/>
 	<property name="build.classes.dir" value="build/classes"/>
 	<property name="build.jar.dir" value="build/jar"/>
 	<property name="main.class" value="com.davecoss.java.Main"/>
+	<property name="test.class" value="com.davecoss.java.TestRunner"/>
   <property name="lib.dir" value="lib"/>
   <property name="jar.name" value="javalib.jar"/>
 
   <path id="classpath">
     <fileset dir="${lib.dir}" includes="**/*.jar"/>
+  </path>
+
+  <path id="testpath">
+    <fileset dir="${test.dir}" includes="**/*.jar"/>
   </path>
 
   <path id="targetclasspath">
@@ -51,7 +57,15 @@
     </target>
 
     <target name="test" depends="jar">
-      <java fork="true" classpathref="classpath" classpath="${build.jar.dir}/${jar.name}" classname="${main.class}"/>
+      <javac srcdir="test" destdir="${build.classes.dir}" classpathref="targetclasspath" debug="on">
+         <compilerarg value="-Xlint:unchecked"/>
+      </javac>
+      <jar destfile="${build.jar.dir}/test.jar" includes="${build.classes.dir}/Test*.class">
+         <manifest>
+		 <attribute name="Main-Class" value="${test.class}"/>
+         </manifest>
+      </jar>
+      <java fork="true" classpathref="targetclasspath" classpath="${build.jar.dir}/test.jar" classname="${test.class}"/>
    </target>
 
    <target name="javadoc">
