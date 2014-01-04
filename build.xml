@@ -60,12 +60,13 @@
       <javac srcdir="test" destdir="${build.classes.dir}" classpathref="targetclasspath" debug="on">
          <compilerarg value="-Xlint:unchecked"/>
       </javac>
-      <jar destfile="${build.jar.dir}/test.jar" includes="${build.classes.dir}/Test*.class">
+      <jar destfile="${build.jar.dir}/test.jar" basedir="${build.classes.dir}">
+	 <fileset dir="src" includes="${build.classes.dir}/**/Test*.class"/>
          <manifest>
 		 <attribute name="Main-Class" value="${test.class}"/>
          </manifest>
       </jar>
-      <java fork="true" classpathref="targetclasspath" classpath="${build.jar.dir}/test.jar" classname="${test.class}"/>
+      <java fork="true" classpathref="targetclasspath" classname="${test.class}"/>
    </target>
 
    <target name="javadoc">
