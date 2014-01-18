@@ -3,25 +3,53 @@ package com.davecoss.java;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 
-
 public class ConsoleLog implements LogHandler {
 
 	private String prefix = "";
 	private PrintWriter log = new PrintWriter(System.err);
 	protected static Level level = Level.ERROR;
 	
-	public ConsoleLog(String prefix) {
-		this.prefix = prefix + " - ";
+	protected ConsoleLog() {
+		// nothing to do
 	}
 	
-	public ConsoleLog(String prefix, OutputStream logstream) {
-		this.prefix = prefix + " - ";
-		this.log = new PrintWriter(logstream);
+	public static Logger getInstance() {
+		if(Logger.instance == null)
+			Logger.getInstance();
+		Logger.setLog(new ConsoleLog());
+		return Logger.instance;
 	}
 	
-	public ConsoleLog(String prefix, PrintWriter logwriter) {
-		this.prefix = prefix + " - ";
-		this.log = logwriter;
+	public static Logger getInstance(String prefix) {
+		if(Logger.instance == null) {
+			Logger.instance = new Logger();
+		}
+		ConsoleLog newlog = new ConsoleLog();
+		newlog.prefix = prefix + " - ";
+		Logger.setLog(newlog);
+		return Logger.instance;
+	}
+	
+	public static Logger getInstance(String prefix, OutputStream logstream) {
+		if(Logger.instance == null) {
+			Logger.instance = new Logger();
+		}
+		ConsoleLog newlog = new ConsoleLog();
+		newlog.prefix = prefix + " - ";
+		newlog.log = new PrintWriter(logstream);
+		Logger.setLog(newlog);
+		return Logger.instance;
+	}
+	
+	public static Logger getInstance(String prefix, PrintWriter logwriter) {
+		if(Logger.instance == null) {
+			Logger.instance = new Logger();
+		}
+		ConsoleLog newlog = new ConsoleLog();
+		newlog.prefix = prefix + " - ";
+		newlog.log = logwriter;
+		Logger.setLog(newlog);
+		return Logger.instance;
 	}
 	
 	@Override
