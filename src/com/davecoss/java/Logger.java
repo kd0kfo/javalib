@@ -86,5 +86,9 @@ public class Logger implements LogHandler {
 	public void info(String msg, Throwable throwable) {
 		log.info(msg, throwable);
 	}
+	
+	public static Level parseLevel(String level) {
+		return Level.valueOf(level);
+	}
 
 }
