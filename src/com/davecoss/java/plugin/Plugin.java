@@ -16,10 +16,6 @@ public interface Plugin {
 
     public void init(JDialog parent) throws PluginInitException;
 	
-	public Collection<String> list_functions() throws PluginException;
-	
-	public boolean has_function(String function_name) throws PluginException;
-	
 	public void destroy() throws PluginException;
 	
 	public File get_jarfile();

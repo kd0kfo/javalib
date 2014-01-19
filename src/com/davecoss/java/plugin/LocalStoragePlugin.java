@@ -39,16 +39,6 @@ public class LocalStoragePlugin implements StoragePlugin {
 
 
 	@Override
-	public Collection<String> list_functions() throws PluginException {
-		throw new PluginException("Not implemented");
-	}
-
-	@Override
-	public boolean has_function(String function_name) throws PluginException {
-		throw new PluginException("Not implemented");
-	}
-
-	@Override
 	public void destroy() throws PluginException {
 		// Nothing to do
 	}
