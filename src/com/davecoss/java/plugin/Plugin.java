@@ -12,6 +12,10 @@ public interface Plugin {
 	
 	public void init(Console console) throws PluginInitException;
 	
+	/*
+	 * Replace with an object argument list instead. So that we have console, swing and arbitrary options.
+	 */
+	@Deprecated
     public void init(PrintStream output, InputStream input) throws PluginInitException;
 
     public void init(JDialog parent) throws PluginInitException;

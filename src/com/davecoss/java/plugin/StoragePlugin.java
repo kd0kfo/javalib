@@ -9,13 +9,13 @@ public interface StoragePlugin extends Plugin {
 
 	public String get_protocol();
 	
-	public URI mkdir(String path);
+	public URI mkdir(String path) throws PluginException;
 	
-	public boolean isFile(URI uri);
+	public boolean isFile(URI uri) throws PluginException;
 
-	public boolean exists(URI uri);
+	public boolean exists(URI uri) throws PluginException;
 
-	public URI[] listFiles(URI uri);
+	public URI[] listFiles(URI uri) throws PluginException;
 
 	/**
 	 * Read input from the provided stream. Store it into the File/URI specified in the destination parameter.
