@@ -17,7 +17,7 @@ public class Logger implements LogHandler {
 		return instance;
 	}
 	
-	protected static LogHandler setLog(LogHandler newlog) {
+	public static LogHandler setLog(LogHandler newlog) {
 		log = newlog;
 		return log;
 	}
