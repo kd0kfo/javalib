@@ -7,8 +7,8 @@ import java.io.InputStreamReader;
 
 public class CredentialPair {
 
-	private String username = null;
-	private char[] passphrase = null;
+	protected String username = null;
+	protected char[] passphrase = null;
 	
 	public CredentialPair(String username, char[] passphrase) {
 		this.username = username;
