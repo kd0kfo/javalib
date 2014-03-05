@@ -7,9 +7,13 @@ package com.davecoss.java;
  *
  */
 
+import java.io.IOException;
+import java.io.OutputStream;
+
+
 public interface GenericBase64 {
 
 	public String encode(byte[] data) throws Exception;
 	public byte[] decode(String string) throws Exception;
-	
+	public OutputStream encodeOutputStream (OutputStream baseStream) throws IOException;	
 }
