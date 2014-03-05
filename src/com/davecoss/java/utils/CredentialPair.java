@@ -30,12 +30,16 @@ public class CredentialPair {
 	
 	public void destroyCreds() {
 		username = null;
-		
+		destroyPassphrase();
+	}
+
+	public void destroyPassphrase() {
 		if(passphrase != null) {
 			int size = passphrase.length;
 			for(int i = 0;i<size;i++)
 				passphrase[i] = 0;
 		}
+
 	}
 	
 	public static CredentialPair fromInputStream(InputStream input) throws IOException {
