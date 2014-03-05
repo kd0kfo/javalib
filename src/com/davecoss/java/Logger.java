@@ -39,51 +39,71 @@ public class Logger implements LogHandler {
 
 	@Override
 	public void fatal(String msg) {
+		if(log == null)
+			return;
 		log.fatal(msg);
 	}
 
 	@Override
 	public void fatal(String msg, Throwable throwable) {
+		if(log == null)
+			return;
 		log.fatal(msg, throwable);
 	}
 
 	@Override
 	public void error(String msg) {
+		if(log == null)
+			return;
 		log.error(msg);
 	}
 
 	@Override
 	public void error(String msg, Throwable throwable) {
+		if(log == null)
+			return;
 		log.error(msg, throwable);
 	}
 
 	@Override
 	public void debug(String msg) {
+		if(log == null)
+			return;
 		log.debug(msg);
 	}
 
 	@Override
 	public void debug(String msg, Throwable throwable) {
+		if(log == null)
+			return;
 		log.debug(msg, throwable);
 	}
 
 	@Override
 	public void warn(String msg) {
+		if(log == null)
+			return;
 		log.warn(msg);
 	}
 
 	@Override
 	public void warn(String msg, Throwable throwable) {
+		if(log == null)
+			return;
 		log.warn(msg, throwable);
 	}
 
 	@Override
 	public void info(String msg) {
+		if(log == null)
+			return;
 		log.info(msg);
 	}
 
 	@Override
 	public void info(String msg, Throwable throwable) {
+		if(log == null)
+			return;
 		log.info(msg, throwable);
 	}
 	
