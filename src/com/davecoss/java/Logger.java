@@ -107,6 +107,20 @@ public class Logger implements LogHandler {
 		log.info(msg, throwable);
 	}
 	
+	@Override
+	public void verbose(String msg) {
+		if(log == null)
+			return;
+		log.verbose(msg);
+	}
+
+	@Override
+	public void verbose(String msg, Throwable throwable) {
+		if(log == null)
+			return;
+		log.verbose(msg, throwable);
+	}
+	
 	public static Level parseLevel(String level) {
 		return Level.valueOf(level);
 	}

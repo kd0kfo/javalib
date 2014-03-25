@@ -4,7 +4,7 @@ import java.io.OutputStream;
 
 public interface LogHandler {
 
-	enum Level {DEBUG, INFO, WARN, ERROR, FATAL };
+	enum Level {VERBOSE, DEBUG, INFO, WARN, ERROR, FATAL };
 	
 	public void setLevel(Level newlevel);
 	public Level getLevel();
@@ -25,4 +25,7 @@ public interface LogHandler {
 	
 	public void info(String msg);
 	public void info(String msg, Throwable throwable);
+	
+	public void verbose(String msg);
+	public void verbose(String msg, Throwable throwable);
 }

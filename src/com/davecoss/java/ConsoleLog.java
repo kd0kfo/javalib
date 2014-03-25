@@ -154,6 +154,24 @@ public class ConsoleLog implements LogHandler {
 		flush();
 	}
 	
+	@Override
+	public void verbose(String msg) {
+		if(level.ordinal() > Level.VERBOSE.ordinal())
+			return;
+		log.write(prefix);
+		log.println(msg);
+		flush();
+	}
+
+	@Override
+	public void verbose(String msg, Throwable throwable) {
+		if(level.ordinal() > Level.VERBOSE.ordinal())
+			return;
+		info(msg);
+		throwable.printStackTrace(log);
+		flush();
+	}
+	
 	public void flush() {
 		log.flush();
 	}
