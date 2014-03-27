@@ -1,5 +1,6 @@
 package com.davecoss.java.utils;
 
+import java.awt.Component;
 import java.awt.FlowLayout;
 
 import javax.swing.JDialog;
@@ -16,7 +17,7 @@ public class JDialogCredentialPair extends CredentialPair {
 		super(username, passphrase);
 	}
 
-	public static CredentialPair showInputDialog(JDialog parent) {
+	public static CredentialPair showInputDialog(Component parent) {
 		JTextField unameField = new JTextField(10);
 		JLabel uLabel = new JLabel("Username:");
 		JPasswordField jPassphrase = new JPasswordField(10);
