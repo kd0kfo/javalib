@@ -7,6 +7,12 @@
   <version>1.0.b</version>
   <name>javalib</name>
   <url>http://maven.apache.org</url>
+  <distributionManagement>
+	  <repository>
+			  <id>local</id>
+			  <url>file://${internal.repo.path}</url>
+		</repository>
+	</distributionManagement>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
