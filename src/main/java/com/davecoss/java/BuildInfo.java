@@ -8,8 +8,14 @@ public class BuildInfo {
 	private Properties info_data = null;
 
 	public BuildInfo(@SuppressWarnings("rawtypes") Class c) {
+		Package pack = c.getPackage();
+		if(pack == null) {
+			info_data = null;
+			return;
+		}
+		String packageName = pack.getName();
 		info_data = new Properties();
-		InputStream info_file = get_info_file("build.info", c);
+		InputStream info_file = get_info_file("/" + packageName + ".build_info.properties", c);
 		if (info_file == null) {
 			info_data = null;
 		} else {
@@ -34,6 +40,7 @@ public class BuildInfo {
 	}
 	
 	public InputStream get_info_file(String filename, @SuppressWarnings("rawtypes") Class c) {
+		System.err.println("Getting info for file " + filename);
 		return c.getResourceAsStream(filename);
 	}
 }

@@ -10,4 +10,11 @@ public class Test {
 		L.info("Foo");
 	}
 
+	@org.junit.Test
+	public void testBuildInfo() {
+		BuildInfo bi = new BuildInfo(BuildInfo.class);
+		L.info("Obtained build info");
+		L.info((String)bi.get_build_properties().get("build_date"));
+	}
+
 }
