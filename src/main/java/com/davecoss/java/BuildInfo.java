@@ -40,7 +40,6 @@ public class BuildInfo {
 	}
 	
 	public InputStream get_info_file(String filename, @SuppressWarnings("rawtypes") Class c) {
-		System.err.println("Getting info for file " + filename);
 		return c.getResourceAsStream(filename);
 	}
 }
