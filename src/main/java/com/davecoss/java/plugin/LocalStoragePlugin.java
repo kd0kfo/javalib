@@ -13,7 +13,7 @@ import java.net.URI;
 
 import javax.swing.JDialog;
 
-public class LocalStoragePlugin implements StoragePlugin {
+public class LocalStoragePlugin extends StoragePlugin {
 	
 	private File jarfile = null;
 	
@@ -27,11 +27,6 @@ public class LocalStoragePlugin implements StoragePlugin {
 	}
 	
 	@Override
-	public void init(PrintStream output, InputStream input) throws PluginInitException {
-		// Nothing to do.
-	}
-
-        @Override
 	public void init(JDialog parent) throws PluginInitException {
 	    // Nothing to do
 	}
@@ -43,12 +38,12 @@ public class LocalStoragePlugin implements StoragePlugin {
 	}
 
 	@Override
-	public File get_jarfile() {
+	public File getJarfile() {
 		return jarfile;
 	}
 
 	@Override
-	public File set_jarfile(File file) {
+	public File setJarfile(File file) {
 		return (jarfile = file);
 	}
 

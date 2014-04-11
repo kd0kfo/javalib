@@ -5,17 +5,17 @@ import java.io.OutputStream;
 import java.net.URI;
 
 
-public interface StoragePlugin extends Plugin {
+public abstract class StoragePlugin extends Plugin {
 
-	public String get_protocol();
+	public abstract String get_protocol();
 	
-	public URI mkdir(String path) throws PluginException;
+	public abstract URI mkdir(String path) throws PluginException;
 	
-	public boolean isFile(URI uri) throws PluginException;
+	public abstract boolean isFile(URI uri) throws PluginException;
 
-	public boolean exists(URI uri) throws PluginException;
+	public abstract boolean exists(URI uri) throws PluginException;
 
-	public URI[] listFiles(URI uri) throws PluginException;
+	public abstract URI[] listFiles(URI uri) throws PluginException;
 
 	/**
 	 * Read input from the provided stream. Store it into the File/URI specified in the destination parameter.
@@ -24,10 +24,10 @@ public interface StoragePlugin extends Plugin {
 	 * @param amount_to_read int Amount to read. -1 indicates read until EOF.
 	 * @param destination URI
 	 */
-	public URI saveStream(InputStream input, int amount_to_read, URI destination) throws PluginException;
+	public abstract URI saveStream(InputStream input, int amount_to_read, URI destination) throws PluginException;
 
-	public InputStream getInputStream(URI uri) throws PluginException;
+	public abstract InputStream getInputStream(URI uri) throws PluginException;
 
-	public OutputStream getOutputStream(URI uri) throws PluginException;
+	public abstract OutputStream getOutputStream(URI uri) throws PluginException;
 	
 }

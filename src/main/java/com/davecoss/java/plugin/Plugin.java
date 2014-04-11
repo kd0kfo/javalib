@@ -8,21 +8,26 @@ import java.util.Collection;
 
 import javax.swing.JDialog;
 
-public interface Plugin {
+public abstract class Plugin {
 	
-	public void init(Console console) throws PluginInitException;
+	public abstract void init(Console console) throws PluginInitException;
 	
-	/*
-	 * Replace with an object argument list instead. So that we have console, swing and arbitrary options.
+	public abstract void init(JDialog parent) throws PluginInitException;
+	
+	public abstract void destroy() throws PluginException;
+	
+	public abstract File getJarfile();
+
+	public abstract File setJarfile(File file);
+	
+	
+	/**
+	 * Based on the plugin type name, returns the specific class.
+	 * 
+	 * If no class is defined for the provided type, a PluginException is thrown.
 	 */
-	@Deprecated
-    public void init(PrintStream output, InputStream input) throws PluginInitException;
-
-    public void init(JDialog parent) throws PluginInitException;
+	public Class getPluginByType(String type) throws PluginException {
+		throw new PluginException(String.format("%s does not implement getPluginByType.", this.getClass().getName()));
+	}
 	
-	public void destroy() throws PluginException;
-	
-	public File get_jarfile();
-
-	public File set_jarfile(File file);
 }
