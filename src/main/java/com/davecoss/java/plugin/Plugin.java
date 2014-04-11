@@ -26,7 +26,7 @@ public abstract class Plugin {
 	 * 
 	 * If no class is defined for the provided type, a PluginException is thrown.
 	 */
-	public Class getPluginByType(String type) throws PluginException {
+	public Class getPluginByType(Types.PluginTypes t) throws PluginException {
 		throw new PluginException(String.format("%s does not implement getPluginByType.", this.getClass().getName()));
 	}
 	

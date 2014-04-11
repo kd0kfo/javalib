@@ -37,7 +37,7 @@ public class PluginUtils {
 	}
 	
 	public static String get_main_classname(Plugin plugin) throws IOException {
-		return get_main_classname(plugin.get_jarfile());
+		return get_main_classname(plugin.getJarfile());
 	}
 	
 	
