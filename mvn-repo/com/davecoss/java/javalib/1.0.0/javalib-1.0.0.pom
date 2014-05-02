@@ -4,7 +4,7 @@
   <groupId>com.davecoss.java</groupId>
   <artifactId>javalib</artifactId>
   <packaging>jar</packaging>
-  <version>1.0.b</version>
+  <version>1.0.0</version>
   <name>javalib</name>
   <url>http://maven.apache.org</url>
   <properties>
