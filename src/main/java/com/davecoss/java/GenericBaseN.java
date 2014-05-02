@@ -12,7 +12,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 
-public interface GenericBase64 {
+public interface GenericBaseN {
 
 	public String encode(byte[] data) throws Exception;
 	public byte[] decode(String string) throws Exception;
